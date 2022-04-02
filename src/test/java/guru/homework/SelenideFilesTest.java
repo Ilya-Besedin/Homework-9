@@ -18,7 +18,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 public class SelenideFilesTest {
 
     private static final String
-            //archived files
+            //names with testzip because it's a feature of zip compressor in Mac OSX
             pdf = "testzip/schedule.pdf",
             xlsx = "testzip/music.xlsx",
             csv = "testzip/mail.csv";
