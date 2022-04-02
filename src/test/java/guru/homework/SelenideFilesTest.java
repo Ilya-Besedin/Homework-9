@@ -18,10 +18,16 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 public class SelenideFilesTest {
 
     private static final String
+
             //names with testzip because it's a feature of zip compressor in Mac OSX
             pdf = "testzip/schedule.pdf",
             xlsx = "testzip/music.xlsx",
-            csv = "testzip/mail.csv";
+            csv = "testzip/mail.csv",
+
+            //expected results
+            pdfexpected = "Селищев Валерий Анатольевич",
+            csvexpected = "Login email;Identifier;First name;Last name";
+    private static final int xlsxecpected = 40;
 
     @Test
     void selenideZipTest() throws Exception {
@@ -45,7 +51,7 @@ public class SelenideFilesTest {
     private void parsePdfFile(InputStream file) throws IOException {
         PDF pdf = new PDF(file);
         assertThat(pdf.text).contains(
-                "Селищев Валерий Анатольевич"
+                pdfexpected
         );
     }
 
@@ -55,14 +61,14 @@ public class SelenideFilesTest {
                 .getSheetAt(0)
                 .getRow(1)
                 .getCell(1)
-                .getNumericCellValue()).isEqualTo(40);
+                .getNumericCellValue()).isEqualTo(xlsxecpected);
     }
 
     private void parseCsvFile(InputStream file) throws Exception {
         try (CSVReader reader = new CSVReader(new InputStreamReader(file));) {
             List<String[]> content = reader.readAll();
             assertThat(content.get(0)).contains(
-                    "Login email;Identifier;First name;Last name"
+                    csvexpected
             );
         }
     }
