@@ -19,9 +19,9 @@ public class SelenideFilesTest {
 
     private static final String
             //archived files
-            pdf = "schedule.pdf",
-            xlsx = "music.xlsx",
-            csv = "mail.csv";
+            pdf = "testzip/schedule.pdf",
+            xlsx = "testzip/music.xlsx",
+            csv = "testzip/mail.csv";
 
     @Test
     void selenideZipTest() throws Exception {
@@ -54,8 +54,8 @@ public class SelenideFilesTest {
         assertThat(xlsx.excel
                 .getSheetAt(0)
                 .getRow(1)
-                .getCell(18)
-                .getStringCellValue()).contains("m4a");
+                .getCell(1)
+                .getNumericCellValue()).isEqualTo(40);
     }
 
     private void parseCsvFile(InputStream file) throws Exception {
