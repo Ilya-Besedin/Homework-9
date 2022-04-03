@@ -1,0 +1,13 @@
+{
+	"code": 200,
+	"status": "success",
+	"item": {
+		"id": 17234,
+		"name": "Finest clock",
+		"russian_name": "Лучшие часы",
+		"manufacturer": "Rocket",
+		"image": "\/image\/3b6a5d.jpg",
+		"price": 32050,
+		"available": true
+	}
+}

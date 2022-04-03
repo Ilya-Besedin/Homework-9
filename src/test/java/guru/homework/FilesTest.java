@@ -15,7 +15,7 @@ import java.util.zip.ZipFile;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class SelenideFilesTest {
+public class FilesTest {
 
     private static final String
 
@@ -27,7 +27,7 @@ public class SelenideFilesTest {
             //expected results
             pdfexpected = "Селищев Валерий Анатольевич",
             csvexpected = "Login email;Identifier;First name;Last name";
-    private static final int xlsxecpected = 40;
+    private static final int xlsxexpected = 40; //how to change to class String but support numbers?
 
     @Test
     void selenideZipTest() throws Exception {
@@ -61,7 +61,7 @@ public class SelenideFilesTest {
                 .getSheetAt(0)
                 .getRow(1)
                 .getCell(1)
-                .getNumericCellValue()).isEqualTo(xlsxecpected);
+                .getNumericCellValue()).isEqualTo(xlsxexpected);
     }
 
     private void parseCsvFile(InputStream file) throws Exception {
